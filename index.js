@@ -10,7 +10,7 @@ function EightByEight(address, bus){
 EightByEight.prototype.setPixel = function(x, y, color){
   if (x < 0 || x > 7) return
   if (y < 0 || y > 7) return
-  x = (x + 7) & 8 // x rows are off-by-one.  Bug?
+  x = (x + 7) % 8 // x rows are off-by-one.  Bug?
   var row = this.disp.getBufferRow(y)
   if (color) {
     this.disp.setBufferRow(y, row | 1 << x)
