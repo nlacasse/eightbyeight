@@ -44,13 +44,18 @@ LEDBackpack.prototype.setBlinkRate = function(blinkRate){
 
 LEDBackpack.prototype.setBufferRow = function(row, value, update){
   if (update !== false) update = true
-  if (row > 7) return
+  if (row < 0 || row > 7) return
   this.buffer[row] = value // value # & 0xFFFF
   if (update) this.writeDisplay()
 }
 
 LEDBackpack.prototype.getBuffer = function(){
   return _.clone(this.buffer)
+}
+
+LEDBackpack.prototype.getBufferRow = function(row){
+  if (row < 0 || row > 7) return
+  return this.buffer[row]
 }
 
 LEDBackpack.prototype.writeDisplay = function(){
