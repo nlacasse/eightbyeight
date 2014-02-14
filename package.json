@@ -2,7 +2,7 @@
   "name": "eightbyeight",
   "version": "0.0.0",
   "description": "Node library for Adafruit 8x8 LED Matrix",
-  "main": "eightie.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
