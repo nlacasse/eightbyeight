@@ -1,0 +1,22 @@
+{
+  "name": "eightbyeight",
+  "version": "0.0.0",
+  "description": "Node library for Adafruit 8x8 LED Matrix",
+  "main": "eightie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nlacasse/eightbyeight.git"
+  },
+  "author": "nlacasse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nlacasse/eightbyeight/issues"
+  },
+  "dependencies": {
+    "underscore": "~1.6.0",
+    "i2c": "~0.1.4"
+  }
+}
