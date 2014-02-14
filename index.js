@@ -12,9 +12,9 @@ EightByEight.prototype.setPixel = function(x, y, color){
   if (y < 0 || y > 7) return
   var row = this.disp.getBufferRow(y)
   if (color) {
-    this.disp.setBufferRow(y, buffer[y] | 1 << x)
+    this.disp.setBufferRow(y, row | 1 << x)
   } else {
-    this.disp.setBufferRow(y, buffer[y] & ~(1 << x))
+    this.disp.setBufferRow(y, row & ~(1 << x))
   }
 }
 
