@@ -1,6 +1,6 @@
 {
   "name": "eightbyeight",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node library for Adafruit 8x8 LED Matrix",
   "main": "index.js",
   "scripts": {
