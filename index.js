@@ -8,6 +8,7 @@ function EightByEight(address, bus){
 }
 
 EightByEight.prototype.setPixel = function(x, y, color){
+  color = color || 1
   if (x < 0 || x > 7) return
   if (y < 0 || y > 7) return
   x = (x + 7) % 8 // x rows are off-by-one.  Bug?
@@ -21,6 +22,14 @@ EightByEight.prototype.setPixel = function(x, y, color){
 
 EightByEight.prototype.clearPixel = function(x, y){
   this.setPixel(x, y, 0)
+}
+
+EightByEight.prototype.startTransaction = function(){
+  this.disp.startTransaction()
+}
+
+EightByEight.prototype.commitTransaction = function(){
+  this.disp.commitTransaction()
 }
 
 EightByEight.prototype.clear = function(){
