@@ -19,6 +19,9 @@ function LEDBackpack(address, bus){
   // Display buffer (8x16-bits)
   this.buffer = [0, 0, 0, 0, 0, 0, 0, 0]
 
+  // transaction level
+  this.transactionLevel = 0;
+
   // Turn the oscillator on
   this.wire.writeBytes(__HT16K33_REGISTER_SYSTEM_SETUP | 0x01, [0x00])
 
@@ -42,11 +45,12 @@ LEDBackpack.prototype.setBlinkRate = function(blinkRate){
   this.wire.writeBytes(__HT16K33_REGISTER_DISPLAY_SETUP | 0x01 | (blinkRate << 1), [0x00])
 }
 
-LEDBackpack.prototype.setBufferRow = function(row, value, update){
-  if (update !== false) update = true
+LEDBackpack.prototype.setBufferRow = function(row, value){
   if (row < 0 || row > 7) return
   this.buffer[row] = value // value # & 0xFFFF
-  if (update) this.writeDisplay()
+  if (this.transactionLevel === 0) {
+    this.writeDisplay()
+  }
 }
 
 LEDBackpack.prototype.getBuffer = function(){
@@ -67,10 +71,22 @@ LEDBackpack.prototype.writeDisplay = function(){
   this.wire.writeBytes(0x00, bytes)
 }
 
-LEDBackpack.prototype.clear = function(update){
-  if (update !== false) update = true
+LEDBackpack.prototype.clear = function(){
   this.buffer = [ 0, 0, 0, 0, 0, 0, 0, 0 ]
-  if (update) this.writeDisplay()
+  if (this.transactionLevel === 0) {
+    this.writeDisplay()
+  }
+}
+
+LEDBackpack.prototype.startTransaction = function(){
+  this.transactionLevel++;
+}
+
+LEDBackpack.prototype.commitTransaction = function(){
+  this.transactionLevel--;
+  if (transactionLevel === 0) {
+    this.writeDisplay()
+  }
 }
 
 module.exports = LEDBackpack
