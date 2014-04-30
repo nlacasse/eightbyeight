@@ -72,7 +72,7 @@ LEDBackpack.prototype.writeDisplay = function(){
 }
 
 LEDBackpack.prototype.allOn = function(){
-  this.buffer = [ 1, 1, 1, 1, 1, 1, 1, 1 ]
+  this.buffer = [ 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF ]
   if (this.transactionLevel === 0) {
     this.writeDisplay()
   }
