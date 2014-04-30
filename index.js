@@ -36,5 +36,13 @@ EightByEight.prototype.clear = function(){
   this.disp.clear()
 }
 
+EightByEight.prototype.allOn = function(){
+  this.disp.allOn()
+}
+
+EightByEight.prototype.allOff = function(){
+  this.disp.allOff()
+}
+
 module.exports = EightByEight
 

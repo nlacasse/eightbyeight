@@ -71,12 +71,21 @@ LEDBackpack.prototype.writeDisplay = function(){
   this.wire.writeBytes(0x00, bytes)
 }
 
-LEDBackpack.prototype.clear = function(){
+LEDBackpack.prototype.allOn = function(){
+  this.buffer = [ 1, 1, 1, 1, 1, 1, 1, 1 ]
+  if (this.transactionLevel === 0) {
+    this.writeDisplay()
+  }
+}
+
+LEDBackpack.prototype.allOff = function(){
   this.buffer = [ 0, 0, 0, 0, 0, 0, 0, 0 ]
   if (this.transactionLevel === 0) {
     this.writeDisplay()
   }
 }
+
+LEDBackpack.prototype.clear = LEDBackpack.prototype.allOff
 
 LEDBackpack.prototype.startTransaction = function(){
   this.transactionLevel++;
