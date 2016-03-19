@@ -93,7 +93,7 @@ LEDBackpack.prototype.startTransaction = function(){
 
 LEDBackpack.prototype.commitTransaction = function(){
   this.transactionLevel--;
-  if (transactionLevel === 0) {
+  if (this.transactionLevel === 0) {
     this.writeDisplay()
   }
 }
